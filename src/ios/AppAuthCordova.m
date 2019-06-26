@@ -2,6 +2,7 @@
 
 #import <Cordova/CDV.h>
 #import <AppAuth/AppAuth.h>
+#import "RNAppAuthAuthorizationFlowManager.h"
 
 @interface AppAuthCordova : CDVPlugin {
   // Member variables go here.
@@ -21,8 +22,8 @@
     NSArray* scopes = [command.arguments objectAtIndex:4];
     NSDictionary *_Nullable additionalParameters = [command.arguments objectAtIndex:5];
     NSDictionary *_Nullable serviceConfiguration = [command.arguments objectAtIndex:6];
-    BOOL* useNonce = [command.arguments objectAtIndex:7];
-    BOOL* usePKCE = [command.arguments objectAtIndex:8];
+    NSNumber useNonce = [command.arguments objectAtIndex:7];
+    NSNumber usePKCE = [command.arguments objectAtIndex:8];
     NSString* callbackId = command.callbackId;
     
     // if we have manually provided configuration, we can use it and skip the OIDC well-known discovery endpoint call
@@ -102,8 +103,8 @@
                           clientId: (NSString *) clientId
                       clientSecret: (NSString *) clientSecret
                             scopes: (NSArray *) scopes
-                          useNonce: (BOOL *) useNonce
-                           usePKCE: (BOOL *) usePKCE
+                          useNonce: (NSNumber *) useNonce
+                           usePKCE: (NSNumber *) usePKCE
               additionalParameters: (NSDictionary *_Nullable) additionalParameters
                         callbackId: (NSString *) callbackId
 {
