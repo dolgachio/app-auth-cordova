@@ -1,5 +1,27 @@
 var exec = require('cordova/exec');
 
-exports.coolMethod = function (arg0, success, error) {
-    exec(success, error, 'AppAuthCordova', 'coolMethod', [arg0]);
+exports.authorize = function (
+    issuer,
+    redirectUrl,
+    clientId,
+    clientSecret,
+    scopes,
+    additionalParameters,
+    serviceConfiguration,
+    useNonce,
+    usePKCE,
+    resolve,
+    reject) {
+
+    exec(resolve, reject, 'AppAuthCordova', 'authorize', [
+        issuer,
+        redirectUrl,
+        clientId,
+        clientSecret,
+        scopes,
+        additionalParameters,
+        serviceConfiguration,
+        useNonce,
+        usePKCE
+    ]);
 };
